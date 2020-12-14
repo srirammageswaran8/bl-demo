@@ -19,4 +19,6 @@ COPY solr/standalone/solrhome/ server/solr/
 RUN ls -la server/solr && \
     chmod -R 775 /opt/solr/
 
-ENTRYPOINT [ "/opt/solr/bin/solr", "start" , "-f" , "-p", "8898"]
+EXPOSE 8983
+
+ENTRYPOINT [ "/opt/solr/bin/solr", "start" , "-f" , "-p", "8983"]
