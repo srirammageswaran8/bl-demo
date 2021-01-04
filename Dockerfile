@@ -1,14 +1,9 @@
-FROM centos:7.8.2003
+FROM gcr.io/distroless/java:11
 
 USER root
 
-RUN yum install -y java-1.8.0-openjdk && \
-    mkdir -p /opt/app
-
-COPY api/target/api.jar /opt/app/api.jar
-COPY admin/target/admin.jar /opt/app/admin.jar
-COPY site/target/ROOT.jar /opt/app/site.jar
-
-RUN chmod -R 775 /opt/app/
+COPY api/target/api.jar /api.jar
+COPY admin/target/admin.jar /admin.jar
+COPY site/target/ROOT.jar /site.jar
 
 ENTRYPOINT ["java", "-jar"]
